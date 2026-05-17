@@ -2,23 +2,23 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bot, BriefcaseBusiness, CircleDollarSign, Home, Inbox, MessageSquareText, Search, UsersRound } from "lucide-react";
+import { CircleDollarSign, Home, Inbox, Megaphone, MessageSquareText, Search, UsersRound } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { NavItem } from "./Sidebar";
 
 const coupleMobile: NavItem[] = [
   { label: "Home", href: "/dashboard", icon: Home },
   { label: "Vendors", href: "/marketplace", icon: Search },
-  { label: "Chat", href: "/messages", icon: MessageSquareText },
+  { label: "Messages", href: "/messages", icon: MessageSquareText },
   { label: "Budget", href: "/budget", icon: CircleDollarSign },
-  { label: "Plan", href: "/planner", icon: Bot },
+  { label: "Guests", href: "/rsvp", icon: UsersRound },
 ];
 
 const vendorMobile: NavItem[] = [
   { label: "Home", href: "/vendor/dashboard", icon: Home },
   { label: "Leads", href: "/vendor/leads", icon: Inbox },
-  { label: "Clients", href: "/vendor/clients", icon: BriefcaseBusiness },
-  { label: "Chat", href: "/vendor/messages", icon: MessageSquareText },
+  { label: "Needs", href: "/vendor/opportunities", icon: Megaphone },
+  { label: "Messages", href: "/vendor/messages", icon: MessageSquareText },
   { label: "Couple", href: "/dashboard", icon: UsersRound },
 ];
 

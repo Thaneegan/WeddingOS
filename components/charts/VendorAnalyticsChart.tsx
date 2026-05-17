@@ -2,7 +2,7 @@
 
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-const views = [
+const defaultViews = [
   { month: "Jan", views: 820, leads: 18 },
   { month: "Feb", views: 930, leads: 23 },
   { month: "Mar", views: 1120, leads: 31 },
@@ -11,14 +11,20 @@ const views = [
   { month: "Jun", views: 1610, leads: 45 },
 ];
 
-const sources = [
+const defaultSources = [
   { name: "Marketplace", value: 48 },
   { name: "Profile", value: 27 },
   { name: "Referrals", value: 15 },
   { name: "Social", value: 10 },
 ];
 
-export function VendorAnalyticsChart() {
+export function VendorAnalyticsChart({
+  views = defaultViews,
+  sources = defaultSources,
+}: {
+  views?: { month: string; views: number; leads: number }[];
+  sources?: { name: string; value: number }[];
+}) {
   return (
     <div className="grid gap-5 lg:grid-cols-2">
       <section className="rounded-2xl border border-[#e7dfd3] bg-white p-5 luxury-shadow">

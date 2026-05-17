@@ -1,18 +1,19 @@
-export type VendorCategory =
-  | "Venues"
-  | "Photography"
-  | "Videography"
-  | "Decor"
-  | "Florals"
-  | "DJ / Music"
-  | "Catering"
-  | "Makeup"
-  | "Hair"
-  | "Wedding Planner"
-  | "Transportation"
-  | "Cake / Desserts"
-  | "Officiant"
-  | "Invitations";
+export type CategoryType = "vendor_service" | "budget" | "task" | "guest_group" | "event" | "misc";
+
+export type CategoryScope = "global" | "wedding" | "vendor_business";
+
+export type CategorySummary = {
+  id: string;
+  name: string;
+  slug: string;
+  type: CategoryType;
+  scope: CategoryScope;
+  color?: string;
+  icon?: string;
+  archivedAt?: string;
+};
+
+export type VendorCategory = string;
 
 export type RSVPStatus = "Attending" | "Declined" | "Pending";
 
@@ -27,21 +28,7 @@ export type LeadStage =
 
 export type SenderRole = "couple" | "vendor" | "system";
 
-export type BudgetCategory =
-  | "Venue"
-  | "Catering"
-  | "Photography"
-  | "Videography"
-  | "Decor"
-  | "Florals"
-  | "Music"
-  | "Makeup"
-  | "Hair"
-  | "Attire"
-  | "Transportation"
-  | "Cake"
-  | "Invitations"
-  | "Miscellaneous";
+export type BudgetCategory = string;
 
 export type WeddingDetails = {
   couple: string;
@@ -116,6 +103,8 @@ export type Guest = {
   group: string;
   status: RSVPStatus;
   plusOne: boolean;
+  additionalGuestCount?: number;
+  companionDetails?: string;
   mealChoice: "Chicken" | "Vegetarian" | "Vegan" | "Halal" | "Pending";
   tableNumber?: number;
   notes?: string;

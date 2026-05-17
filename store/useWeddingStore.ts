@@ -3,6 +3,7 @@
 import { create } from "zustand";
 import {
   budgetItems as initialBudgetItems,
+  categories as initialCategories,
   clientRecords as initialClientRecords,
   conversations as initialConversations,
   guests as initialGuests,
@@ -11,11 +12,13 @@ import {
   timelineTasks as initialTimelineTasks,
   vendors as initialVendors,
   weddingDetails,
-} from "@/lib/mockData";
+} from "@/lib/fallbackData";
 import { categoryToBudgetCategory } from "@/lib/utils";
 import type {
   AIPlan,
   BudgetItem,
+  CategorySummary,
+  CategoryType,
   Conversation,
   Guest,
   Lead,
@@ -29,6 +32,7 @@ import type {
 
 type WeddingStore = {
   wedding: WeddingDetails;
+  categories: CategorySummary[];
   vendors: Vendor[];
   budgetItems: BudgetItem[];
   guests: Guest[];
@@ -52,6 +56,9 @@ type WeddingStore = {
   updateRSVPGuest: (guestId: string, updates: Partial<Guest>) => void;
   completeTask: (taskId: string) => void;
   generateAIPlan: () => void;
+  createCustomCategory: (input: { name: string; type: CategoryType; color?: string; icon?: string }) => CategorySummary;
+  archiveCategory: (categoryId: string) => void;
+  addBudgetItem: (input: { category: string; label: string; amount: number; dueDate?: string }) => void;
 };
 
 function uid(prefix: string) {
@@ -75,6 +82,7 @@ function createConversation(vendor: Vendor): Conversation {
 
 export const useWeddingStore = create<WeddingStore>((set, get) => ({
   wedding: weddingDetails,
+  categories: initialCategories,
   vendors: initialVendors,
   budgetItems: initialBudgetItems,
   guests: initialGuests,
@@ -305,6 +313,7 @@ export const useWeddingStore = create<WeddingStore>((set, get) => ({
           "Photography and venue are currently your highest-impact booking decisions.",
           "You are projected to remain $3,800 under budget if you select the recommended decor package.",
           "Book makeup and transportation next based on your timeline.",
+          "Create custom categories for cultural events, family logistics, or specialty services that do not fit standard wedding templates.",
         ],
         riskFlags: [
           "Photography is not yet booked for a prime July date.",
@@ -313,5 +322,47 @@ export const useWeddingStore = create<WeddingStore>((set, get) => ({
         ],
       },
     });
+  },
+
+  createCustomCategory: (input) => {
+    const state = get();
+    const category: CategorySummary = {
+      id: uid("category"),
+      name: input.name.trim(),
+      slug: `${input.name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-")}-${Date.now().toString(36)}`,
+      type: input.type,
+      scope: input.type === "vendor_service" ? "vendor_business" : "wedding",
+      color: input.color ?? "#c8a97e",
+      icon: input.icon ?? "Sparkles",
+    };
+
+    set({ categories: [...state.categories, category] });
+    return category;
+  },
+
+  archiveCategory: (categoryId) => {
+    const state = get();
+    set({
+      categories: state.categories.map((category) =>
+        category.id === categoryId && category.scope !== "global"
+          ? { ...category, archivedAt: new Date().toISOString() }
+          : category,
+      ),
+    });
+  },
+
+  addBudgetItem: (input) => {
+    const state = get();
+    const item: BudgetItem = {
+      id: uid("budget"),
+      category: input.category,
+      label: input.label,
+      amount: input.amount,
+      paid: 0,
+      dueDate: input.dueDate ?? "2026-06-30",
+      status: "Planned",
+    };
+
+    set({ budgetItems: [...state.budgetItems, item] });
   },
 }));

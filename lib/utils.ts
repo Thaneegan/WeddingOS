@@ -23,7 +23,7 @@ export function formatDate(value: string) {
 }
 
 export function categoryToBudgetCategory(category: VendorCategory): BudgetCategory {
-  const map: Record<VendorCategory, BudgetCategory> = {
+  const map: Record<string, BudgetCategory> = {
     Venues: "Venue",
     Photography: "Photography",
     Videography: "Videography",
@@ -40,13 +40,13 @@ export function categoryToBudgetCategory(category: VendorCategory): BudgetCatego
     Invitations: "Invitations",
   };
 
-  return map[category];
+  return map[category] ?? "Miscellaneous";
 }
 
 export function initials(name: string) {
   return name
     .split(" ")
-    .filter(Boolean)
+    .filter((part) => /^[A-Za-z0-9]/.test(part))
     .slice(0, 2)
     .map((part) => part[0])
     .join("")

@@ -1,17 +1,17 @@
 import { AppLayout } from "@/components/layout/AppLayout";
 import { VendorProfile } from "@/components/vendor/VendorProfile";
-import { vendors } from "@/lib/mockData";
+import { getVendorProfileData } from "@/lib/coreData";
 
-export function generateStaticParams() {
-  return vendors.map((vendor) => ({ id: vendor.id }));
-}
+export const dynamic = "force-dynamic";
 
 export default async function VendorProfilePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  const vendor = await getVendorProfileData(id);
+
   return (
     <AppLayout>
       <div className="mx-auto max-w-7xl">
-        <VendorProfile vendorId={id} />
+        <VendorProfile vendor={vendor} />
       </div>
     </AppLayout>
   );

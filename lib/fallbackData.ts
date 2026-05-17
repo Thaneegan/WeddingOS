@@ -1,5 +1,6 @@
 import type {
   BudgetItem,
+  CategorySummary,
   ClientRecord,
   Conversation,
   Guest,
@@ -33,6 +34,32 @@ export const weddingDetails: WeddingDetails = {
   budget: 35000,
   guestCount: 120,
 };
+
+export const categories: CategorySummary[] = [
+  { id: "cat-vendor-venues", name: "Venues", slug: "venues", type: "vendor_service", scope: "global", color: "#8a6332", icon: "Building2" },
+  { id: "cat-vendor-photo", name: "Photography", slug: "photography", type: "vendor_service", scope: "global", color: "#9a7a50", icon: "Camera" },
+  { id: "cat-vendor-video", name: "Videography", slug: "videography", type: "vendor_service", scope: "global", color: "#61735f", icon: "Video" },
+  { id: "cat-vendor-decor", name: "Decor", slug: "decor", type: "vendor_service", scope: "global", color: "#b66f72", icon: "Sparkles" },
+  { id: "cat-vendor-florals", name: "Florals", slug: "florals", type: "vendor_service", scope: "global", color: "#61735f", icon: "Flower2" },
+  { id: "cat-vendor-music", name: "DJ / Music", slug: "dj-music", type: "vendor_service", scope: "global", color: "#191714", icon: "Music" },
+  { id: "cat-vendor-catering", name: "Catering", slug: "catering", type: "vendor_service", scope: "global", color: "#8a6332", icon: "Utensils" },
+  { id: "cat-vendor-makeup", name: "Makeup", slug: "makeup", type: "vendor_service", scope: "global", color: "#b66f72", icon: "Brush" },
+  { id: "cat-vendor-hair", name: "Hair", slug: "hair", type: "vendor_service", scope: "global", color: "#b66f72", icon: "Scissors" },
+  { id: "cat-vendor-planner", name: "Wedding Planner", slug: "wedding-planner", type: "vendor_service", scope: "global", color: "#9a7a50", icon: "CalendarCheck" },
+  { id: "cat-vendor-transport", name: "Transportation", slug: "transportation", type: "vendor_service", scope: "global", color: "#61735f", icon: "Car" },
+  { id: "cat-vendor-cake", name: "Cake / Desserts", slug: "cake-desserts", type: "vendor_service", scope: "global", color: "#c8a97e", icon: "Cake" },
+  { id: "cat-vendor-officiant", name: "Officiant", slug: "officiant", type: "vendor_service", scope: "global", color: "#191714", icon: "ScrollText" },
+  { id: "cat-vendor-invites", name: "Invitations", slug: "invitations", type: "vendor_service", scope: "global", color: "#9a7a50", icon: "Mail" },
+  { id: "cat-budget-venue", name: "Venue", slug: "budget-venue", type: "budget", scope: "global", color: "#8a6332", icon: "Building2" },
+  { id: "cat-budget-catering", name: "Catering", slug: "budget-catering", type: "budget", scope: "global", color: "#8a6332", icon: "Utensils" },
+  { id: "cat-budget-photo", name: "Photography", slug: "budget-photography", type: "budget", scope: "global", color: "#9a7a50", icon: "Camera" },
+  { id: "cat-budget-decor", name: "Decor", slug: "budget-decor", type: "budget", scope: "global", color: "#b66f72", icon: "Sparkles" },
+  { id: "cat-budget-music", name: "Music", slug: "budget-music", type: "budget", scope: "global", color: "#191714", icon: "Music" },
+  { id: "cat-budget-transport", name: "Transportation", slug: "budget-transportation", type: "budget", scope: "global", color: "#61735f", icon: "Car" },
+  { id: "cat-budget-custom-cultural", name: "Cultural Events", slug: "cultural-events", type: "budget", scope: "wedding", color: "#b66f72", icon: "Sparkles" },
+  { id: "cat-task-planning", name: "Planning", slug: "planning", type: "task", scope: "global", color: "#9a7a50", icon: "ListChecks" },
+  { id: "cat-task-family", name: "Family Logistics", slug: "family-logistics", type: "task", scope: "wedding", color: "#61735f", icon: "UsersRound" },
+];
 
 export const vendors: Vendor[] = [
   {
@@ -592,6 +619,8 @@ export const guests: Guest[] = Array.from({ length: 50 }, (_, index) => ({
   group: guestGroups[index % guestGroups.length],
   status: statuses[index % statuses.length],
   plusOne: index % 4 === 0,
+  additionalGuestCount: index % 4 === 0 ? 1 : 0,
+  companionDetails: index % 4 === 0 ? "Partner / spouse" : undefined,
   mealChoice: mealChoices[index % mealChoices.length],
   tableNumber: index % 6 === 0 ? undefined : (index % 12) + 1,
   notes: index % 9 === 0 ? "Needs shuttle from hotel." : undefined,
