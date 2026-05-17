@@ -125,15 +125,15 @@ export default function Home() {
             className="max-w-4xl"
           >
             <motion.p variants={heroItem} className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-white/78">
-              One operating system for weddings
+              Wedding OS
             </motion.p>
             <motion.div variants={heroItem}>
               <h1 className="font-display text-5xl font-semibold leading-[0.98] text-white sm:text-6xl lg:text-7xl">
-                <AnimatedText text="Plan the wedding. Book the team. Manage everything." />
+                <AnimatedText text="One operating system for weddings." />
               </h1>
             </motion.div>
             <motion.p variants={heroItem} className="mt-6 max-w-2xl text-lg leading-8 text-white/84 sm:text-xl">
-              Wedding OS brings couples, vendors, messages, budgets, RSVPs, timelines, documents, and bookings into one connected workspace.
+              <span className="font-semibold text-white">Plan the wedding. Book the team. Manage everything.</span> Wedding OS brings couples, vendors, messages, budgets, RSVPs, timelines, documents, and bookings into one connected workspace.
             </motion.p>
             <motion.div variants={heroItem} className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/signup" className="flex h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-semibold text-[#191714]">
