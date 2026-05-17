@@ -180,6 +180,33 @@ export default function Home() {
         ) : null}
       </section>
 
+      <section className="border-y border-[#e7dfd3] bg-white px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#9a7a50]">For both sides</p>
+            <h2 className="mt-3 font-display text-4xl font-semibold">Couples get planning depth. Vendors get a real client pipeline.</h2>
+          </div>
+          <div className="mt-8 grid gap-5 lg:grid-cols-2">
+            <AudienceCard
+              title="For couples"
+              icon={UsersRound}
+              description="Build the wedding workspace, invite collaborators, compare vendors, request quotes, manage RSVPs, track payments, and keep every message in context."
+              items={coupleFlow}
+              href="/signup"
+              cta="Start couple onboarding"
+            />
+            <AudienceCard
+              title="For vendors"
+              icon={Store}
+              description="Publish a profile, manage incoming inquiries, move leads through a CRM, message couples, schedule calls, track booked clients, and see analytics."
+              items={vendorFlow}
+              href="/signup"
+              cta="Start vendor onboarding"
+            />
+          </div>
+        </div>
+      </section>
+
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-center">
@@ -205,33 +232,6 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-[#e7dfd3] bg-white px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#9a7a50]">For both sides</p>
-            <h2 className="mt-3 font-display text-4xl font-semibold">Couples get planning depth. Vendors get a real client pipeline.</h2>
-          </div>
-          <div className="mt-8 grid gap-5 lg:grid-cols-2">
-            <AudienceCard
-              title="For couples"
-              icon={UsersRound}
-              description="Build the wedding workspace, invite collaborators, compare vendors, request quotes, manage RSVPs, track payments, and keep every message in context."
-              items={coupleFlow}
-              href="/signup"
-              cta="Start couple onboarding"
-            />
-            <AudienceCard
-              title="For vendors"
-              icon={Store}
-              description="Publish a profile, manage incoming inquiries, move leads through a CRM, message couples, schedule calls, track booked clients, and see analytics."
-              items={vendorFlow}
-              href="/signup"
-              cta="Start vendor onboarding"
-            />
           </div>
         </div>
       </section>
