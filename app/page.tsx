@@ -132,10 +132,13 @@ export default function Home() {
                 <AnimatedText text="One operating system for weddings." />
               </h1>
             </motion.div>
-            <motion.p variants={heroItem} className="mt-6 max-w-2xl text-lg leading-8 text-white/84 sm:text-xl">
-              <span className="font-semibold text-white">Plan the wedding. Book the team. Manage everything.</span> Wedding OS brings couples, vendors, messages, budgets, RSVPs, timelines, documents, and bookings into one connected workspace.
+            <motion.p variants={heroItem} className="mt-7 max-w-2xl text-2xl font-semibold leading-9 text-white sm:text-3xl">
+              Plan the wedding. Book the team. Manage everything.
             </motion.p>
-            <motion.div variants={heroItem} className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <motion.p variants={heroItem} className="mt-5 max-w-xl text-base leading-7 text-white/78 sm:text-lg">
+              Wedding OS brings couples, vendors, messages, budgets, RSVPs, timelines, documents, and bookings into one connected workspace.
+            </motion.p>
+            <motion.div variants={heroItem} className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link href="/signup" className="flex h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-semibold text-[#191714]">
                 Join with invite
                 <ArrowRight size={17} />
@@ -144,7 +147,7 @@ export default function Home() {
                 Sign in
               </Link>
             </motion.div>
-            <motion.div variants={heroItem} className="mt-8 flex flex-wrap gap-2">
+            <motion.div variants={heroItem} className="mt-10 flex flex-wrap gap-3">
               {heroSignals.map((signal, index) => (
                 <motion.span
                   key={signal}
