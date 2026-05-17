@@ -14,7 +14,6 @@ import {
   MessageSquareText,
   Search,
   ShieldCheck,
-  Sparkles,
   Store,
   UsersRound,
 } from "lucide-react";
@@ -125,8 +124,7 @@ export default function Home() {
             animate={reduceMotion ? undefined : "show"}
             className="max-w-4xl"
           >
-            <motion.p variants={heroItem} className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/14 px-4 py-2 text-sm font-semibold text-white backdrop-blur">
-              <Sparkles size={16} />
+            <motion.p variants={heroItem} className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-white/78">
               One operating system for weddings
             </motion.p>
             <motion.div variants={heroItem}>
